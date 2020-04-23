@@ -41,7 +41,7 @@ class OrderItem extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width / 2.5,
                   child: Text(
-                    'هنا يتم كتابة نبذة عن الحالة المرضية..',
+                    'هنا يتم كتابة نبذة عن الحالة المرضية.',
                     textDirection: TextDirection.rtl,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.kodchasan().copyWith(
