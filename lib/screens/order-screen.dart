@@ -75,7 +75,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             SizedBox(
                               width: 20,
                             ),
-                            Text('اسحب الى الاعلى لعرض المزيد',
+                            Text('اسحب الى الاعلى لعرض المزيد....',
                                 style: GoogleFonts.tajawal().copyWith(
                                     color: Colors.grey[400], fontSize: 12)),
                           ],
