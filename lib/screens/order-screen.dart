@@ -109,52 +109,42 @@ class _OrderScreenState extends State<OrderScreen> {
             curve: Curves.elasticOut,
             right: 50,
             child: AnimatedPadding(
-              padding: EdgeInsets.only(top: 130 + _progressSlideSheet * 21),
+              padding: EdgeInsets.only(top: 265 - _progressSlideSheet * 80),
               duration: Duration(milliseconds: 500),
               curve: Curves.elasticOut,
-              child: Image.network(
-                'https://www.zzlocal.com/images/visa-logo-black-and-white.png',
-                height: 80,
-                width: 80,
+              child: Text(
+                '19/4/2020',
+                style: GoogleFonts.lato().copyWith(
+                    fontWeight: FontWeight.w100,
+                    color: Colors.white70,
+                    fontSize: 18),
               ),
             ),
           ),
           AnimatedPositioned(
             duration: Duration(milliseconds: 500),
             curve: Curves.elasticOut,
-            left: 50,
             child: AnimatedOpacity(
-              opacity: 1 - _progressSlideSheet,
               duration: Duration(milliseconds: 50),
+              opacity: 1 - _progressSlideSheet,
               child: AnimatedPadding(
                 padding: EdgeInsets.only(top: 150),
                 duration: Duration(milliseconds: 500),
                 curve: Curves.elasticOut,
-                child: Image.network(
-                  'https://img.icons8.com/cotton/2x/sim-card-chip.png',
-                  height: 40,
-                  width: 40,
-                ),
-              ),
-            ),
-          ),
-          AnimatedPositioned(
-            duration: Duration(milliseconds: 500),
-            curve: Curves.elasticOut,
-            left: 50,
-            child: AnimatedOpacity(
-              duration: Duration(milliseconds: 50),
-              opacity: 1 - _progressSlideSheet,
-              child: AnimatedPadding(
-                padding: EdgeInsets.only(top: 220),
-                duration: Duration(milliseconds: 500),
-                curve: Curves.elasticOut,
-                child: Text(
-                  '1535    1518    1996    1885',
-                  style: GoogleFonts.lato().copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 16),
+                child: Container(
+                  height: 100,
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  child: SingleChildScrollView(
+                    child: Text(
+                      'هنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيهنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيهنا يتم كهنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيهنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيهنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شي',
+                      textAlign: TextAlign.justify,
+                      textDirection: TextDirection.rtl,
+                      style: GoogleFonts.lato().copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 16),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -168,7 +158,7 @@ class _OrderScreenState extends State<OrderScreen> {
               duration: Duration(milliseconds: 500),
               curve: Curves.elasticOut,
               child: Text(
-                'R\$ 245,00',
+                'سيف ماهر محمد',
                 style: GoogleFonts.lato().copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

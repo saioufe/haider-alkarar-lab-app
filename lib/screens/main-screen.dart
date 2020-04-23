@@ -1,5 +1,6 @@
 import 'package:a_alkarar_lab/screens/empty-order-screen.dart';
 import 'package:a_alkarar_lab/screens/home-screen.dart';
+import 'package:a_alkarar_lab/screens/login-screen.dart';
 import 'package:a_alkarar_lab/screens/order-screen.dart';
 import 'package:a_alkarar_lab/screens/user-profile-screen.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _TabsScreenState extends State<MainScreen> {
         'title': 'order',
       },
       {
-        'page': UserProfileScreen(),
+        'page': LoginScreen(),
         'title': 'home',
       },
     ];
