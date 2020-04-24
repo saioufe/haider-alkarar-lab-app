@@ -1,4 +1,5 @@
 import 'package:a_alkarar_lab/screens/main-screen.dart';
+import 'package:a_alkarar_lab/screens/news-pressed-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,4 +26,7 @@ void main() => runApp(MaterialApp(
         ),
       ),
       home: MainScreen(),
+      routes: {
+        NewsPressedScreen.routeName: (ctx) => NewsPressedScreen(),
+      },
     ));

@@ -84,7 +84,7 @@ class EmptyOrderScreen extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.all(10),
                 child: Text(
-                  "لا يوجد اضافات",
+                  "لا يوجد نتائج",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 27,
@@ -98,7 +98,7 @@ class EmptyOrderScreen extends StatelessWidget {
               child: Container(
                 width: 280,
                 child: Text(
-                  "يجب عليك ادراج اضافة لتظهر هنا اضغط على الزر في الاسفل لبدا الاستخدام",
+                  "سجل الدخول بحسابك لمشاهدة نتائج التحاليل او انتظر بعض الوقت لظهور النتائج في هذه الصفحة",
                   style: TextStyle(
                     fontWeight: FontWeight.w100,
                     fontSize: 19,
@@ -109,38 +109,38 @@ class EmptyOrderScreen extends StatelessWidget {
                 ),
               ),
             ),
-            InkWell(
-              onTap: null,
-              child: Container(
-                  margin: EdgeInsets.all(15),
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(15),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 20,
-                        spreadRadius:
-                            0.48, // has the effect of extending the shadow
-                        offset: Offset(
-                          0, // horizontal, move right 10
-                          15, // vertical, move down 10
-                        ),
-                      )
-                    ],
-                  ),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
-                    onPressed: null,
-                  )),
-            )
+            // InkWell(
+            //   onTap: null,
+            //   child: Container(
+            //       margin: EdgeInsets.all(15),
+            //       width: 50,
+            //       height: 50,
+            //       decoration: BoxDecoration(
+            //         color: Theme.of(context).primaryColor,
+            //         borderRadius: BorderRadius.all(
+            //           Radius.circular(15),
+            //         ),
+            //         boxShadow: [
+            //           BoxShadow(
+            //             color: Colors.black12,
+            //             blurRadius: 20,
+            //             spreadRadius:
+            //                 0.48, // has the effect of extending the shadow
+            //             offset: Offset(
+            //               0, // horizontal, move right 10
+            //               15, // vertical, move down 10
+            //             ),
+            //           )
+            //         ],
+            //       ),
+            //       child: IconButton(
+            //         icon: Icon(
+            //           Icons.add,
+            //           color: Colors.white,
+            //         ),
+            //         onPressed: null,
+            //       )),
+            // )
           ],
         ),
       ),

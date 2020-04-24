@@ -1,7 +1,7 @@
 import 'package:a_alkarar_lab/screens/empty-order-screen.dart';
 import 'package:a_alkarar_lab/screens/home-screen.dart';
 import 'package:a_alkarar_lab/screens/login-screen.dart';
-import 'package:a_alkarar_lab/screens/order-screen.dart';
+import 'package:a_alkarar_lab/screens/result-screen.dart';
 import 'package:a_alkarar_lab/screens/user-profile-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,11 +25,11 @@ class _TabsScreenState extends State<MainScreen> {
         'title': 'profile',
       },
       {
-        'page': OrderScreen(),
+        'page': ResultsScreen(),
         'title': 'order',
       },
       {
-        'page': LoginScreen(),
+        'page': UserProfileScreen(),
         'title': 'home',
       },
     ];
@@ -90,7 +90,7 @@ class _TabsScreenState extends State<MainScreen> {
                 ),
               ),
               title: Text(
-                'الطلبات',
+                'التحاليل',
                 style: GoogleFonts.tajawal(),
               ),
             ),

@@ -4,12 +4,12 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
-class OrderScreen extends StatefulWidget {
+class ResultsScreen extends StatefulWidget {
   @override
-  _OrderScreenState createState() => _OrderScreenState();
+  _ResultsScreenState createState() => _ResultsScreenState();
 }
 
-class _OrderScreenState extends State<OrderScreen> {
+class _ResultsScreenState extends State<ResultsScreen> {
   double _progressSlideSheet = 0;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'الطلبات',
+                  'التحاليل',
                   style: GoogleFonts.tajawal().copyWith(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).bottomAppBarColor,
@@ -133,18 +133,29 @@ class _OrderScreenState extends State<OrderScreen> {
                 curve: Curves.elasticOut,
                 child: Container(
                   height: 100,
-                  width: MediaQuery.of(context).size.width / 1.5,
+                  width: MediaQuery.of(context).size.width / 2.4,
                   child: SingleChildScrollView(
-                    child: Text(
-                      'هنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيهنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيهنا يتم كهنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيهنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيهنا يتم كافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص  جديد بشرط كامل وبدون نقص ولا شيافة التفاصيل المعطاه عند اداخال عرض جديد بشرط كامل وبدون نقص ولا شي',
-                      textAlign: TextAlign.justify,
-                      textDirection: TextDirection.rtl,
-                      style: GoogleFonts.lato().copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 16),
+                      child: FlatButton(
+                    focusColor: Colors.red,
+                    textColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    color: Theme.of(context).bottomAppBarColor,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Icon(Icons.file_download),
+                          Text("تحميل",
+                              style: GoogleFonts.tajawal().copyWith(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
                     ),
-                  ),
+                    onPressed: () {},
+                  )),
                 ),
               ),
             ),

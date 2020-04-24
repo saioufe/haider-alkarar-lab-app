@@ -42,18 +42,7 @@ class OrderItem extends StatelessWidget {
                             color: Theme.of(context).bottomAppBarColor,
                             fontSize: 16),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        child: Text(
-                          'هنا يتم كتابة نبذة عن الحالة المرضية',
-                          textDirection: TextDirection.rtl,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.kodchasan().copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                              fontSize: 16),
-                        ),
-                      ),
+
                     ],
                   ),
                   Container(
