@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EmptyOrderScreen extends StatelessWidget {
   @override
@@ -109,38 +111,46 @@ class EmptyOrderScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // InkWell(
-            //   onTap: null,
-            //   child: Container(
-            //       margin: EdgeInsets.all(15),
-            //       width: 50,
-            //       height: 50,
-            //       decoration: BoxDecoration(
-            //         color: Theme.of(context).primaryColor,
-            //         borderRadius: BorderRadius.all(
-            //           Radius.circular(15),
-            //         ),
-            //         boxShadow: [
-            //           BoxShadow(
-            //             color: Colors.black12,
-            //             blurRadius: 20,
-            //             spreadRadius:
-            //                 0.48, // has the effect of extending the shadow
-            //             offset: Offset(
-            //               0, // horizontal, move right 10
-            //               15, // vertical, move down 10
-            //             ),
-            //           )
-            //         ],
-            //       ),
-            //       child: IconButton(
-            //         icon: Icon(
-            //           Icons.add,
-            //           color: Colors.white,
-            //         ),
-            //         onPressed: null,
-            //       )),
-            // )
+            InkWell(
+              onTap: () {},
+              child: Container(
+                margin: EdgeInsets.all(15),
+                width: 190,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 20,
+                      spreadRadius:
+                          0.48, // has the effect of extending the shadow
+                      offset: Offset(
+                        0, // horizontal, move right 10
+                        15, // vertical, move down 10
+                      ),
+                    )
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Icon(
+                      FlutterIcons.sign_in_alt_faw5s,
+                      color: Colors.white,
+                    ),
+                    Text("تسجيل الدخول",
+                        style: GoogleFonts.tajawal().copyWith(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),

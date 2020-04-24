@@ -1,8 +1,11 @@
-import 'package:a_alkarar_lab/widgets/news-template.dart';
+import 'package:a_alkarar_lab/lab_icons_icons.dart';
+import 'package:a_alkarar_lab/screens/main-screen.dart';
+import 'package:a_alkarar_lab/widgets/posts-template.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -10,11 +13,22 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(
-                FlutterIcons.place_mdi,
-                color: Theme.of(context).bottomAppBarColor,
+            InkWell(
+              onTap: () {
+                // Navigator.of(context).pushNamed(MainScreen.routeName,
+                //     arguments: 2);
+                Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.rightToLeftWithFade,
+                        child: MainScreen(2)));
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  LabIcons.microscope,
+                  color: Theme.of(context).bottomAppBarColor,
+                ),
               ),
             ),
           ],
@@ -93,6 +107,15 @@ class HomeScreen extends StatelessWidget {
               postImage: "assets/images/slide4.png",
               userImage: "assets/images/men.png",
               date: "1/5/2020",
+              text:
+                  "هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرحو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح ه هذا هو الشرح هذا هو الشرح هذا هو الشرح",
+            ),
+            NewsTemplate(
+              id: "3",
+              title: "الموضوع الثالث والاخير ",
+              postImage: "assets/images/slide2.png",
+              userImage: "assets/images/men4.png",
+              date: "15/6/2020",
               text:
                   "هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرحو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح ه هذا هو الشرح هذا هو الشرح هذا هو الشرح",
             ),

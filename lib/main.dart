@@ -25,8 +25,9 @@ void main() => runApp(MaterialApp(
           ),
         ),
       ),
-      home: MainScreen(),
+      home: MainScreen(0),
       routes: {
         NewsPressedScreen.routeName: (ctx) => NewsPressedScreen(),
+        MainScreen.routeName: (ctx) => MainScreen(0),
       },
     ));

@@ -25,6 +25,10 @@ dependencies:
   flutter_icons: ^1.0.0+1
   font_awesome_flutter: ^8.0.1
   carousel_slider: ^2.0.0
+  reviews_slider: ^1.0.5
+  url_launcher: ^5.4.1
+  page_transition: "^1.1.5"
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -74,7 +78,9 @@ flutter:
     - family: khebrat
       fonts:
          - asset: assets/fonts/Khebrat-Musamim-New.ttf
-
+    - family:  LabIcons
+      fonts:
+         - asset: assets/icons/LabIcons.ttf
   #  - family: MyFlutterApp
    #   fonts:
    #     - asset: assets/icons/MyFlutterApp.ttf

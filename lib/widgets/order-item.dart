@@ -1,20 +1,18 @@
+import 'package:a_alkarar_lab/lab_icons_icons.dart';
+import 'package:a_alkarar_lab/models/result.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OrderItem extends StatelessWidget {
-  final Icon icone;
-  final String texto;
-  final String preco;
+  final Result result;
 
-  const OrderItem({Key key, this.icone, this.texto, this.preco})
-      : super(key: key);
-
+  OrderItem({@required this.result});
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         InkWell(
-          onTap: null,
+          onTap: () {},
           child: Container(
             height: 70,
             child: Padding(
@@ -24,7 +22,7 @@ class OrderItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    '19/4/2020',
+                    result.date,
                     style: GoogleFonts.kodchasan().copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.grey,
@@ -35,14 +33,13 @@ class OrderItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       Text(
-                        texto,
+                        result.name,
                         textDirection: TextDirection.rtl,
                         style: GoogleFonts.kodchasan().copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).bottomAppBarColor,
                             fontSize: 16),
                       ),
-
                     ],
                   ),
                   Container(
@@ -54,7 +51,10 @@ class OrderItem extends StatelessWidget {
                           Theme.of(context).primaryColor,
                           Color(0xff37c5d2)
                         ])),
-                    child: icone,
+                    child: Icon(
+                      LabIcons.molecule,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),
