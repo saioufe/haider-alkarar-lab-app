@@ -1,4 +1,4 @@
-package com.example.a_alkarar_lab
+package com.creativeapps.halab
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
