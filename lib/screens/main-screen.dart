@@ -6,7 +6,7 @@ import 'package:a_alkarar_lab/screens/login-screen.dart';
 import 'package:a_alkarar_lab/screens/result-screen.dart';
 import 'package:a_alkarar_lab/screens/lab-screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 
 class MainScreen extends StatefulWidget {
   //final List<Meal> favoriteMeals;
@@ -88,7 +88,7 @@ class _TabsScreenState extends State<MainScreen> {
               ),
               title: Text(
                 'الرئيسية',
-                style: GoogleFonts.tajawal(),
+                style: TextStyle(fontFamily: 'tajawal'),
               ),
             ),
             BottomNavigationBarItem(
@@ -101,7 +101,7 @@ class _TabsScreenState extends State<MainScreen> {
               ),
               title: Text(
                 'التحاليل',
-                style: GoogleFonts.tajawal(),
+                style: TextStyle(fontFamily: 'tajawal'),
               ),
             ),
             BottomNavigationBarItem(
@@ -114,7 +114,7 @@ class _TabsScreenState extends State<MainScreen> {
               ),
               title: Text(
                 'المختبر',
-                style: GoogleFonts.tajawal(),
+                style: TextStyle(fontFamily: 'tajawal'),
               ),
             ),
           ],

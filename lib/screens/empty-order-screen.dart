@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class EmptyOrderScreen extends StatelessWidget {
   @override
@@ -142,11 +141,14 @@ class EmptyOrderScreen extends StatelessWidget {
                       FlutterIcons.sign_in_alt_faw5s,
                       color: Colors.white,
                     ),
-                    Text("تسجيل الدخول",
-                        style: GoogleFonts.tajawal().copyWith(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
+                    Text(
+                      "تسجيل الدخول",
+                      style: TextStyle(
+                          fontFamily: 'tajawal',
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),

@@ -2,7 +2,7 @@ import 'package:a_alkarar_lab/lab_icons_icons.dart';
 import 'package:a_alkarar_lab/models/userPortfolio.dart';
 import 'package:a_alkarar_lab/widgets/staff-template.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LabScreen extends StatelessWidget {
@@ -57,7 +57,8 @@ class LabScreen extends StatelessWidget {
                       ),
                       Text(
                         "العنوان",
-                        style: GoogleFonts.tajawal().copyWith(
+                        style: TextStyle(
+                          fontFamily: 'tajawal',
                           color: Theme.of(context).bottomAppBarColor,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -70,7 +71,8 @@ class LabScreen extends StatelessWidget {
                     child: Text(
                       "العراق واسط , الصويرة , مقابل مستشفى الصويرة العامة",
                       textDirection: TextDirection.rtl,
-                      style: GoogleFonts.tajawal().copyWith(
+                      style: TextStyle(
+                        fontFamily: 'tajawal',
                         color: Theme.of(context).bottomAppBarColor,
                         fontSize: 18,
                       ),
@@ -90,7 +92,8 @@ class LabScreen extends StatelessWidget {
                       ),
                       Text(
                         "الاتصال",
-                        style: GoogleFonts.tajawal().copyWith(
+                        style: TextStyle(
+                          fontFamily: 'tajawal',
                           color: Theme.of(context).bottomAppBarColor,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -107,7 +110,8 @@ class LabScreen extends StatelessWidget {
                           "- info@lab.com",
                           textAlign: TextAlign.start,
                           textDirection: TextDirection.rtl,
-                          style: GoogleFonts.tajawal().copyWith(
+                          style: TextStyle(
+                            fontFamily: 'tajawal',
                             color: Theme.of(context).bottomAppBarColor,
                             fontSize: 18,
                           ),
@@ -116,7 +120,8 @@ class LabScreen extends StatelessWidget {
                           "- 07830003082",
                           textAlign: TextAlign.start,
                           textDirection: TextDirection.rtl,
-                          style: GoogleFonts.tajawal().copyWith(
+                          style: TextStyle(
+                            fontFamily: 'tajawal',
                             color: Theme.of(context).bottomAppBarColor,
                             fontSize: 18,
                           ),
@@ -125,7 +130,8 @@ class LabScreen extends StatelessWidget {
                           "- 07700069771",
                           textAlign: TextAlign.start,
                           textDirection: TextDirection.rtl,
-                          style: GoogleFonts.tajawal().copyWith(
+                          style: TextStyle(
+                            fontFamily: 'tajawal',
                             color: Theme.of(context).bottomAppBarColor,
                             fontSize: 18,
                           ),
@@ -147,7 +153,8 @@ class LabScreen extends StatelessWidget {
                       ),
                       Text(
                         "الطاقم",
-                        style: GoogleFonts.tajawal().copyWith(
+                        style: TextStyle(
+                          fontFamily: 'tajawal',
                           color: Theme.of(context).bottomAppBarColor,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

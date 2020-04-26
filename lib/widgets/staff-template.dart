@@ -1,6 +1,5 @@
 import 'package:a_alkarar_lab/models/userPortfolio.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class StaffTemplate extends StatelessWidget {
   final UserPortfolio staffPort;
@@ -13,7 +12,8 @@ class StaffTemplate extends StatelessWidget {
       children: <Widget>[
         Text(
           staffPort.name,
-          style: GoogleFonts.tajawal().copyWith(
+          style: TextStyle(
+            fontFamily: 'tajawal',
             color: Theme.of(context).bottomAppBarColor,
             fontSize: 18,
             fontWeight: FontWeight.bold,

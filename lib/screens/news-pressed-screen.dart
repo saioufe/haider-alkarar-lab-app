@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:reviews_slider/reviews_slider.dart';
 
 class NewsPressedScreen extends StatelessWidget {
@@ -71,8 +70,10 @@ class NewsPressedScreen extends StatelessWidget {
                         children: <Widget>[
                           Expanded(
                             child: Text(
-                              productId[3],
-                              style: GoogleFonts.tajawal().copyWith(
+                              productId[3] ,
+                              maxLines: 1,
+                              style: TextStyle(
+                                  fontFamily: 'tajawal',
                                   color: Theme.of(context).accentColor),
                             ),
                           ),
@@ -81,7 +82,8 @@ class NewsPressedScreen extends StatelessWidget {
                             child: Text(
                               "دكتور سيف ماهر",
                               textAlign: TextAlign.right,
-                              style: GoogleFonts.tajawal().copyWith(
+                              style: TextStyle(
+                                  fontFamily: 'tajawal',
                                   color: Theme.of(context).bottomAppBarColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18),
@@ -106,7 +108,8 @@ class NewsPressedScreen extends StatelessWidget {
                         productId[4],
                         textAlign: TextAlign.justify,
                         textDirection: TextDirection.rtl,
-                        style: GoogleFonts.tajawal().copyWith(
+                        style: TextStyle(
+                            fontFamily: 'tajawal',
                             fontSize: 20,
                             color: Theme.of(context).bottomAppBarColor,
                             height: 1.5),
@@ -115,7 +118,8 @@ class NewsPressedScreen extends StatelessWidget {
                       Text(
                         "ما مدى تقييمك للموضوع ؟",
                         textAlign: TextAlign.right,
-                        style: GoogleFonts.tajawal().copyWith(
+                        style: TextStyle(
+                            fontFamily: 'tajawal',
                             color: Theme.of(context).bottomAppBarColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 18),

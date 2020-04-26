@@ -20,7 +20,6 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^4.0.5
-  google_fonts: ^0.3.9
   sliding_sheet: ^0.2.8
   flutter_icons: ^1.0.0+1
   font_awesome_flutter: ^8.0.1
@@ -75,6 +74,21 @@ flutter:
     - family: akhand
       fonts:
          - asset: assets/fonts/AkhandArabic.ttf
+    - family: tajawal
+      fonts:
+         - asset: assets/fonts/Tajawal-Regular.ttf
+         - asset: assets/fonts/Tajawal-Bold.ttf
+           weight: 600
+         - asset: assets/fonts/Tajawal-Bold.ttf
+           weight: 700
+         - asset: assets/fonts/Tajawal-ExtraBold.ttf
+           weight: 800
+         - asset: assets/fonts/Tajawal-Medium.ttf
+           weight: 500
+         - asset: assets/fonts/Tajawal-Light.ttf
+           weight: 300
+         - asset: assets/fonts/Tajawal-ExtraLight.ttf
+           weight: 200
     - family: khebrat
       fonts:
          - asset: assets/fonts/Khebrat-Musamim-New.ttf

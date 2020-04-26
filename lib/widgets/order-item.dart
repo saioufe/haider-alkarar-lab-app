@@ -1,7 +1,6 @@
 import 'package:a_alkarar_lab/lab_icons_icons.dart';
 import 'package:a_alkarar_lab/models/result.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class OrderItem extends StatelessWidget {
   final Result result;
@@ -23,7 +22,8 @@ class OrderItem extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     result.date,
-                    style: GoogleFonts.kodchasan().copyWith(
+                    style: TextStyle(
+                        fontFamily: 'tajawal',
                         fontWeight: FontWeight.bold,
                         color: Colors.grey,
                         fontSize: 11),
@@ -35,7 +35,8 @@ class OrderItem extends StatelessWidget {
                       Text(
                         result.name,
                         textDirection: TextDirection.rtl,
-                        style: GoogleFonts.kodchasan().copyWith(
+                        style: TextStyle(
+                            fontFamily: 'tajawal',
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).bottomAppBarColor,
                             fontSize: 16),

@@ -2,7 +2,7 @@ import 'package:a_alkarar_lab/models/result.dart';
 import 'package:flutter/material.dart';
 import '../widgets/order-item.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class ResultsScreen extends StatefulWidget {
@@ -21,8 +21,11 @@ class _ResultsScreenState extends State<ResultsScreen> {
           elevation: 0,
           title: Text(
             'التحاليل',
-            style: GoogleFonts.tajawal().copyWith(
-                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 28),
+            style: TextStyle(
+                fontFamily: 'tajawal',
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 28),
           )),
       body: SingleChildScrollView(
         child: Container(
@@ -67,7 +70,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   ),
                   Text(
                     "سيف ماهر محمد",
-                    style: GoogleFonts.tajawal(
+                    style: TextStyle(
+                      fontFamily: 'tajawal',
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                       color: Color(0xff313e4b),
@@ -79,7 +83,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   ),
                   Text(
                     "الجنس : ذكر",
-                    style: GoogleFonts.tajawal(
+                    style: TextStyle(
+                      fontFamily: 'tajawal',
                       fontWeight: FontWeight.w600,
                       fontSize: 20,
                       color: Theme.of(context).accentColor,
@@ -129,7 +134,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   curve: Curves.elasticOut,
                   child: Text(
                     '19/4/2020',
-                    style: GoogleFonts.lato().copyWith(
+                    style: TextStyle(
+                        fontFamily: 'tajawal',
                         fontWeight: FontWeight.w100,
                         color: Colors.white70,
                         fontSize: 18),
@@ -163,7 +169,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                             children: <Widget>[
                               Icon(Icons.file_download),
                               Text("تحميل",
-                                  style: GoogleFonts.tajawal().copyWith(
+                                  style: TextStyle(
+                                      fontFamily: 'tajawal',
                                       color: Colors.white,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold)),
@@ -186,7 +193,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   curve: Curves.elasticOut,
                   child: Text(
                     'سيف ماهر محمد',
-                    style: GoogleFonts.lato().copyWith(
+                    style: TextStyle(
+                        fontFamily: 'tajawal',
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                         fontSize: 28),
@@ -236,7 +244,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                                       width: 20,
                                     ),
                                     Text('اسحب الى الاعلى للاخفاء',
-                                        style: GoogleFonts.tajawal().copyWith(
+                                        style: TextStyle(
+                                            fontFamily: 'tajawal',
                                             color: Colors.grey,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 12)),
@@ -258,7 +267,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                                       width: 20,
                                     ),
                                     Text('اسحب الى الاسفل لعرض المزيد',
-                                        style: GoogleFonts.tajawal().copyWith(
+                                        style: TextStyle(
+                                            fontFamily: 'tajawal',
                                             color: Colors.grey,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 12)),
@@ -289,35 +299,35 @@ class _ResultsScreenState extends State<ResultsScreen> {
                                       date: "19/3/2020",
                                       download: "download 1"),
                                 ),
-                                                                OrderItem(
+                                OrderItem(
                                   result: Result(
                                       id: "2",
                                       name: "علي عبد الواحد جبار",
                                       date: "19/3/2019",
                                       download: "download 2"),
                                 ),
-                                                                OrderItem(
+                                OrderItem(
                                   result: Result(
                                       id: "3",
                                       name: "غيث احمد ممتاز",
                                       date: "1/1/2001",
                                       download: "download 3"),
                                 ),
-                                                                OrderItem(
+                                OrderItem(
                                   result: Result(
                                       id: "4",
                                       name: "ضحى ناطق يحيى",
                                       date: "12/5/2020",
                                       download: "download 4"),
                                 ),
-                                                                OrderItem(
+                                OrderItem(
                                   result: Result(
                                       id: "5",
                                       name: "محمد جمال الدين",
                                       date: "12/5/2019",
                                       download: "download 5"),
                                 ),
-                                                                OrderItem(
+                                OrderItem(
                                   result: Result(
                                       id: "6",
                                       name: "ليث عبد الله",

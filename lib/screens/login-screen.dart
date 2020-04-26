@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -62,9 +61,7 @@ class _LoginScreenState extends State<LoginScreen>
             height: MediaQuery.of(context).size.height >= 775.0
                 ? MediaQuery.of(context).size.height
                 : 645.0,
-            decoration: new BoxDecoration(
-
-            ),
+            decoration: new BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
@@ -186,8 +183,8 @@ class _LoginScreenState extends State<LoginScreen>
                               size: 22.0,
                             ),
                             hintText: "اسم المستخدم",
-                            hintStyle:
-                                GoogleFonts.tajawal().copyWith(fontSize: 17.0),
+                            hintStyle: TextStyle(
+                                fontFamily: 'tajawal', fontSize: 17.0),
                           ),
                         ),
                       ),
@@ -215,8 +212,8 @@ class _LoginScreenState extends State<LoginScreen>
                               color: Colors.black,
                             ),
                             hintText: "كلمة السر",
-                            hintStyle:
-                                GoogleFonts.tajawal().copyWith(fontSize: 17.0),
+                            hintStyle: TextStyle(
+                                fontFamily: 'tajawal', fontSize: 17.0),
                             suffixIcon: GestureDetector(
                               onTap: _toggleLogin,
                               child: Icon(
@@ -266,7 +263,8 @@ class _LoginScreenState extends State<LoginScreen>
                           vertical: 10.0, horizontal: 42.0),
                       child: Text(
                         "تسجيل",
-                        style: GoogleFonts.tajawal().copyWith(
+                        style: TextStyle(
+                          fontFamily: 'tajawal',
                           color: Colors.white,
                           fontSize: 25.0,
                         ),

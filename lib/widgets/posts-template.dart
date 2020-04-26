@@ -1,6 +1,5 @@
 import 'package:a_alkarar_lab/screens/news-pressed-screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NewsTemplate extends StatelessWidget {
   final String id;
@@ -65,7 +64,8 @@ class NewsTemplate extends StatelessWidget {
                             child: Text(
                               title,
                               textAlign: TextAlign.right,
-                              style: GoogleFonts.tajawal().copyWith(
+                              style: TextStyle(
+                                  fontFamily: 'tajawal',
                                   color: Theme.of(context).bottomAppBarColor,
                                   fontWeight: FontWeight.bold),
                               overflow: TextOverflow.ellipsis,
@@ -79,7 +79,8 @@ class NewsTemplate extends StatelessWidget {
                             child: Text(
                               date,
                               textAlign: TextAlign.right,
-                              style: GoogleFonts.tajawal().copyWith(
+                              style: TextStyle(
+                                fontFamily: 'tajawal',
                                 color: Theme.of(context)
                                     .bottomAppBarColor
                                     .withOpacity(0.5),
