@@ -1,3 +1,4 @@
+import 'package:a_alkarar_lab/models/post.dart';
 import 'package:flutter/material.dart';
 import 'package:reviews_slider/reviews_slider.dart';
 
@@ -5,7 +6,7 @@ class NewsPressedScreen extends StatelessWidget {
   static const routeName = '/news_pressed_screen';
   @override
   Widget build(BuildContext context) {
-    final productId = ModalRoute.of(context).settings.arguments as List<String>;
+    final postData = ModalRoute.of(context).settings.arguments as Post;
     //final loadedNews = Provider.of<OthersProvider>(context).findById(productId);
     //final List<String> texts = loadedNews.text.split("*");
     //final Widget test = loadedNews.test;
@@ -26,13 +27,13 @@ class NewsPressedScreen extends StatelessWidget {
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 title: Text(
-                  productId[0],
+                 postData.title,
                   style: TextStyle(color: Colors.white),
                 ),
                 background: Hero(
-                  tag: productId[5],
+                  tag: postData.id ,
                   child: Image.asset(
-                    productId[2],
+                    postData.postImage,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -68,33 +69,36 @@ class NewsPressedScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          Expanded(
-                            child: Text(
-                              productId[3] ,
-                              maxLines: 1,
-                              style: TextStyle(
-                                  fontFamily: 'tajawal',
-                                  color: Theme.of(context).accentColor),
-                            ),
-                          ),
                           Container(
-                            width: 210,
-                            child: Text(
-                              "دكتور سيف ماهر",
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                  fontFamily: 'tajawal',
-                                  color: Theme.of(context).bottomAppBarColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                              overflow: TextOverflow.ellipsis,
+                            width: MediaQuery.of(context).size.width / 1.5,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: <Widget>[
+                                Text(
+                                  postData.userName,
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      fontFamily: 'tajawal',
+                                      color:
+                                          Theme.of(context).bottomAppBarColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                 postData.date,
+                                  style: TextStyle(
+                                      fontFamily: 'tajawal',
+                                      color: Theme.of(context).accentColor),
+                                ),
+                              ],
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(right: 12, left: 10),
                             child: ClipRRect(
                               child: Image.asset(
-                                productId[1],
+                                postData.userImage,
                                 width: 50,
                                 height: 50,
                               ),
@@ -105,7 +109,7 @@ class NewsPressedScreen extends StatelessWidget {
                       ),
                       Divider(),
                       Text(
-                        productId[4],
+                        postData.text,
                         textAlign: TextAlign.justify,
                         textDirection: TextDirection.rtl,
                         style: TextStyle(

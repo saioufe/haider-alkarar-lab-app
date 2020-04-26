@@ -7,6 +7,7 @@ class Post {
   final String date;
   final String postImage;
   final String userImage;
+  final String userName;
   final int readTime;
   final int veryBad;
   final int bad;
@@ -21,6 +22,7 @@ class Post {
     this.date,
     this.postImage,
     this.userImage,
+    this.userName,
     this.readTime,
     this.veryBad,
     this.bad,

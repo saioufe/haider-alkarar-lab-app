@@ -1,28 +1,17 @@
+import 'package:a_alkarar_lab/models/post.dart';
 import 'package:a_alkarar_lab/screens/news-pressed-screen.dart';
 import 'package:flutter/material.dart';
 
 class NewsTemplate extends StatelessWidget {
-  final String id;
-  final String title;
-  final String text;
-  final String date;
-  final String userImage;
-  final String postImage;
+  final Post post;
 
-  NewsTemplate({
-    this.id,
-    this.title,
-    this.postImage,
-    this.userImage,
-    this.date,
-    this.text,
-  });
+  NewsTemplate({this.post});
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(NewsPressedScreen.routeName,
-            arguments: [title, userImage, postImage, date, text, id]);
+            arguments: post);
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 20.0),
@@ -38,8 +27,8 @@ class NewsTemplate extends StatelessWidget {
             children: <Widget>[
               Container(
                 child: Hero(
-                  tag: id,
-                  child: Image.asset(postImage),
+                  tag: post.id,
+                  child: Image.asset(post.postImage),
                 ),
               ),
               Padding(
@@ -62,7 +51,7 @@ class NewsTemplate extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width / 1.7,
                             child: Text(
-                              title,
+                              post.title,
                               textAlign: TextAlign.right,
                               style: TextStyle(
                                   fontFamily: 'tajawal',
@@ -77,7 +66,7 @@ class NewsTemplate extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width / 1.7,
                             child: Text(
-                              date,
+                              post.date,
                               textAlign: TextAlign.right,
                               style: TextStyle(
                                 fontFamily: 'tajawal',
@@ -93,7 +82,7 @@ class NewsTemplate extends StatelessWidget {
                     ),
                     ClipRRect(
                       child: Image.asset(
-                        userImage,
+                        post.userImage,
                         width: 50,
                         height: 50,
                       ),
