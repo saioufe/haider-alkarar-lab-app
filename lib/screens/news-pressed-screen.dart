@@ -1,9 +1,32 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:a_alkarar_lab/models/post.dart';
 import 'package:flutter/material.dart';
-import 'package:reviews_slider/reviews_slider.dart';
+//import 'package:reviews_slider/reviews_slider.dart';
 
-class NewsPressedScreen extends StatelessWidget {
+class NewsPressedScreen extends StatefulWidget {
+  
   static const routeName = '/news_pressed_screen';
+
+  @override
+  _NewsPressedScreenState createState() => _NewsPressedScreenState();
+}
+
+
+class _NewsPressedScreenState extends State<NewsPressedScreen> {
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+    Future getData() async{
+    var url = 'https://www.pandoradevs.com/getflutter.php';
+    http.Response response = await http.get(url);
+    var data = jsonDecode(response.body);
+    print(data.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     final postData = ModalRoute.of(context).settings.arguments as Post;
@@ -120,7 +143,7 @@ class NewsPressedScreen extends StatelessWidget {
                       ),
                       Divider(),
                       Text(
-                        "ما مدى تقييمك للموضوع ؟",
+                        "عداد مرات القراءة",
                         textAlign: TextAlign.right,
                         style: TextStyle(
                             fontFamily: 'tajawal',
@@ -132,15 +155,7 @@ class NewsPressedScreen extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      ReviewSlider(
-                          circleDiameter: 50,
-                          options: ["سيء", "متوسط", "جيد", "جيد جدا", "ممتاز"],
-                          onChange: (int value) {
-                            // active value is an int number from 0 to 4, where:
-                            // 0 is the worst review value
-                            // and 4 is the best review value
-                            print(value);
-                          }),
+                      Text("23 مرة",style: TextStyle(fontFamily: "tajawal",fontSize: 20),)
                     ],
                   ),
                 ),
@@ -152,6 +167,9 @@ class NewsPressedScreen extends StatelessWidget {
     );
   }
 }
+
+
+
 
 Future<bool> _requestPop() {
   return new Future.value(true);
