@@ -30,6 +30,8 @@ dependencies:
   http: ^0.12.0+4
   basic_utils: ^2.5.3
   shimmer: ^1.1.1
+  flare_splash_screen: ^3.0.1
+  #flutter_downloader: ^1.4.4
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2

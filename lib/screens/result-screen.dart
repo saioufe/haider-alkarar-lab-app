@@ -1,9 +1,13 @@
 import 'package:a_alkarar_lab/models/result.dart';
+import 'package:a_alkarar_lab/providers/allProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../widgets/order-item.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
+//import 'package:flutter_downloader/flutter_downloader.dart';
 
 class ResultsScreen extends StatefulWidget {
   @override
@@ -14,6 +18,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
   double _progressSlideSheet = 0;
   @override
   Widget build(BuildContext context) {
+    final allposts = Provider.of<AllProvider>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
@@ -55,13 +61,19 @@ class _ResultsScreenState extends State<ResultsScreen> {
                             border: Border.all(color: Colors.white, width: 7),
                             shape: BoxShape.circle),
                         child: ClipOval(
-                          child: Image.asset(
-                            'assets/images/women2.png',
-                            width: 100,
-                            height: 110,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                            child: allposts.patient[0].sex == "انثى"
+                                ? Image.asset(
+                                    'assets/images/women2.png',
+                                    width: 100,
+                                    height: 110,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.asset(
+                                    'assets/images/men2.png',
+                                    width: 100,
+                                    height: 110,
+                                    fit: BoxFit.cover,
+                                  )),
                       ),
                     ],
                   ),
@@ -69,7 +81,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                     height: 15,
                   ),
                   Text(
-                    "سيف ماهر محمد",
+                    allposts.patient[0].name,
                     style: TextStyle(
                       fontFamily: 'tajawal',
                       fontWeight: FontWeight.bold,
@@ -82,7 +94,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                     height: 10,
                   ),
                   Text(
-                    "الجنس : ذكر",
+                    "الجنس : ${allposts.patient[0].sex}",
                     style: TextStyle(
                       fontFamily: 'tajawal',
                       fontWeight: FontWeight.w600,
@@ -124,24 +136,24 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   ],
                 ),
               ),
-              AnimatedPositioned(
-                duration: Duration(milliseconds: 500),
-                curve: Curves.elasticOut,
-                right: 50,
-                child: AnimatedPadding(
-                  padding: EdgeInsets.only(top: 365 - _progressSlideSheet * 80),
-                  duration: Duration(milliseconds: 500),
-                  curve: Curves.elasticOut,
-                  child: Text(
-                    '19/4/2020',
-                    style: TextStyle(
-                        fontFamily: 'tajawal',
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white70,
-                        fontSize: 18),
-                  ),
-                ),
-              ),
+              // AnimatedPositioned(
+              //   duration: Duration(milliseconds: 500),
+              //   curve: Curves.elasticOut,
+              //   right: 50,
+              //   child: AnimatedPadding(
+              //     padding: EdgeInsets.only(top: 365 - _progressSlideSheet * 80),
+              //     duration: Duration(milliseconds: 500),
+              //     curve: Curves.elasticOut,
+              //     child: Text(
+              //       allposts.patient[0].date,
+              //       style: TextStyle(
+              //           fontFamily: 'tajawal',
+              //           fontWeight: FontWeight.w100,
+              //           color: Colors.white70,
+              //           fontSize: 18),
+              //     ),
+              //   ),
+              // ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.elasticOut,
@@ -164,17 +176,38 @@ class _ResultsScreenState extends State<ResultsScreen> {
                                 BorderRadius.all(Radius.circular(20))),
                         color: Theme.of(context).bottomAppBarColor,
                         child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Icon(Icons.file_download),
-                              Text("تحميل",
-                                  style: TextStyle(
-                                      fontFamily: 'tajawal',
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                            ],
+                          child: FlatButton(
+                            onPressed: () async {
+                              // final taskId = await FlutterDownloader.enqueue(
+                              //   url:
+                              //       'bin/dl.cgi/v376mg4vg73joepvvlg4lmdn7j3khyja6l2a22q6wfi7gqegypm2t3y/793176674_Sharp_Textures.zip',
+                              //   savedDir: 'download',
+                              //   showNotification:
+                              //       true, // show download progress in status bar (for Android)
+                              //   openFileFromNotification:
+                              //       true, // click on notification to open downloaded file (for Android)
+                              // );
+
+                              const url =
+                                  'http://pandoradevs.com/results/book.pdf';
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Icon(Icons.file_download ,color: Colors.white,),
+                                Text("تحميل",
+                                    style: TextStyle(
+                                        fontFamily: 'tajawal',
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold)),
+                              ],
+                            ),
                           ),
                         ),
                         onPressed: () {},
@@ -186,19 +219,28 @@ class _ResultsScreenState extends State<ResultsScreen> {
               AnimatedPositioned(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.elasticOut,
-                left: 50,
+                left: 100,
                 child: AnimatedPadding(
-                  padding: EdgeInsets.only(top: 355 - _progressSlideSheet * 80),
+                  padding: EdgeInsets.only(top: 350 - _progressSlideSheet * 80),
                   duration: Duration(milliseconds: 500),
                   curve: Curves.elasticOut,
-                  child: Text(
-                    'سيف ماهر محمد',
-                    style: TextStyle(
-                        fontFamily: 'tajawal',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 28),
-                  ),
+                  child: allposts.patient[0].status == "s"
+                      ? Text(
+                          'النتيجة لم ترفع الى الان',
+                          style: TextStyle(
+                              fontFamily: 'tajawal',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 22),
+                        )
+                      : Text(
+                          'تم رفع النتيجة',
+                          style: TextStyle(
+                              fontFamily: 'tajawal',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 28),
+                        ),
                 ),
               ),
               SlidingSheet(
@@ -294,45 +336,10 @@ class _ResultsScreenState extends State<ResultsScreen> {
                               children: <Widget>[
                                 OrderItem(
                                   result: Result(
-                                      id: "1",
-                                      name: "سيف ماهر محمد",
-                                      date: "19/3/2020",
-                                      download: "download 1"),
-                                ),
-                                OrderItem(
-                                  result: Result(
-                                      id: "2",
-                                      name: "علي عبد الواحد جبار",
-                                      date: "19/3/2019",
-                                      download: "download 2"),
-                                ),
-                                OrderItem(
-                                  result: Result(
-                                      id: "3",
-                                      name: "غيث احمد ممتاز",
-                                      date: "1/1/2001",
-                                      download: "download 3"),
-                                ),
-                                OrderItem(
-                                  result: Result(
-                                      id: "4",
-                                      name: "ضحى ناطق يحيى",
-                                      date: "12/5/2020",
-                                      download: "download 4"),
-                                ),
-                                OrderItem(
-                                  result: Result(
-                                      id: "5",
-                                      name: "محمد جمال الدين",
-                                      date: "12/5/2019",
-                                      download: "download 5"),
-                                ),
-                                OrderItem(
-                                  result: Result(
-                                      id: "6",
-                                      name: "ليث عبد الله",
-                                      date: "29/1/2020",
-                                      download: "download 6"),
+                                      id: allposts.patient[0].id,
+                                      name: allposts.patient[0].name,
+                                      date: allposts.patient[0].date,
+                                      download: allposts.patient[0].file),
                                 ),
                               ],
                             ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class UserPortfolio {
+class SliderModel {
   final String id;
   final String url;
   final String image;
 
-  UserPortfolio({
+  SliderModel({
     this.id,
     this.url,
     this.image,

@@ -39,7 +39,14 @@ class SliderTemplate extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.symmetric(horizontal: 5.0),
             decoration: BoxDecoration(
-                color: Colors.amber,
+                boxShadow: [
+                  BoxShadow(
+                      color: Theme.of(context).accentColor,
+                      blurRadius: 5.3,
+                      spreadRadius: 0.5,
+                      offset: Offset.fromDirection(-10))
+                ],
+                color: Theme.of(context).primaryColor,
                 image: DecorationImage(
                   image: NetworkImage(
                       "https://pandoradevs.com/images/slider/${allPosts.sliders[itemIndex].image}"),

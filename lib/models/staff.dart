@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-class UserPortfolio {
+class StaffModel {
+  final String id;
   final String name;
   final String image;
 
-  UserPortfolio({
+  StaffModel({
+    this.id,
     this.name,
     this.image,
   });

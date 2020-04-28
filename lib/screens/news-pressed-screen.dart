@@ -84,6 +84,7 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
                       border: Border.all(color: Colors.white, width: 1)),
                   child: Column(
                     children: <Widget>[
+                      
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
@@ -113,10 +114,10 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 12, left: 10),
+                            padding: const EdgeInsets.only(right:2, left: 10),
                             child: ClipRRect(
                               child: Image.asset(
-                                "assets/images/men2.png",
+                                "assets/images/men4.png",
                                 width: 50,
                                 height: 50,
                               ),
@@ -137,23 +138,7 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
                             height: 1.5),
                       ),
                       Divider(),
-                      Text(
-                        "عداد مرات القراءة",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                            fontFamily: 'tajawal',
-                            color: Theme.of(context).bottomAppBarColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        "${postData.readTime} مرة",
-                        style: TextStyle(fontFamily: "tajawal", fontSize: 20),
-                      )
+
                     ],
                   ),
                 ),

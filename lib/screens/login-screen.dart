@@ -1,6 +1,9 @@
+import 'package:a_alkarar_lab/screens/main-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import '../providers/allProvider.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -41,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
+    final allposts = Provider.of<AllProvider>(context, listen: false);
     return new Scaffold(
       // appBar: AppBar(
       //   leading: Icon(
@@ -68,10 +72,26 @@ class _LoginScreenState extends State<LoginScreen>
                 Padding(
                   padding: EdgeInsets.only(top: 100.0),
                   child: new Image(
-                      width: 250.0,
+                      width: 290.0,
                       height: 191.0,
                       fit: BoxFit.fill,
-                      image: new AssetImage('assets/images/login-women.png')),
+                      image: new AssetImage('assets/images/empty_order.png')),
+                ),
+                Divider(),
+                Center(
+                  child: Container(
+                    width: 280,
+                    child: Text(
+                      "\"يرجى تسجيل الدخول لمشاهده وتحميل نتائج التحليل كاملة\"",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w100,
+                        fontSize: 19,
+                        color: Color(0xff313e4b),
+                      ),
+                      textAlign: TextAlign.center,
+                      textDirection: TextDirection.rtl,
+                    ),
+                  ),
                 ),
                 Expanded(
                   flex: 2,
@@ -93,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen>
                     children: <Widget>[
                       new ConstrainedBox(
                         constraints: const BoxConstraints.expand(),
-                        child: _buildSignIn(context),
+                        child: _buildSignIn(context, allposts),
                       ),
                     ],
                   ),
@@ -139,12 +159,12 @@ class _LoginScreenState extends State<LoginScreen>
             fontSize: 16.0,
             fontFamily: "WorkSansSemiBold"),
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: Theme.of(context).primaryColor,
       duration: Duration(seconds: 3),
     ));
   }
 
-  Widget _buildSignIn(BuildContext context) {
+  Widget _buildSignIn(BuildContext context, AllProvider allposts) {
     return Container(
       padding: EdgeInsets.only(top: 23.0),
       child: Column(
@@ -255,23 +275,31 @@ class _LoginScreenState extends State<LoginScreen>
                       tileMode: TileMode.clamp),
                 ),
                 child: MaterialButton(
-                    highlightColor: Colors.transparent,
-                    splashColor: loginGradientEnd,
-                    //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 42.0),
-                      child: Text(
-                        "تسجيل",
-                        style: TextStyle(
-                          fontFamily: 'tajawal',
-                          color: Colors.white,
-                          fontSize: 25.0,
-                        ),
+                  highlightColor: Colors.transparent,
+                  splashColor: loginGradientEnd,
+                  //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 42.0),
+                    child: Text(
+                      "تسجيل",
+                      style: TextStyle(
+                        fontFamily: 'tajawal',
+                        color: Colors.white,
+                        fontSize: 25.0,
                       ),
                     ),
-                    onPressed: () => showInSnackBar("Login button pressed")),
-              ),
+                  ),
+                  onPressed: () {
+                    print(loginEmailController.text);
+                    print(loginPasswordController.text);
+                    allposts.login(loginEmailController.text,
+                        loginPasswordController.text, context);
+
+                    showInSnackBar("يرجى الانتظار");
+                  },
+                ),
+              )
             ],
           ),
         ],

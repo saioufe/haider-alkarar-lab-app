@@ -62,7 +62,7 @@ class Template extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.35,
                     image: NetworkImage(
                         "http://pandoradevs.com/images/posts/${post.postImage}"),
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -117,7 +117,7 @@ class Template extends StatelessWidget {
                     ),
                     ClipRRect(
                       child: Image.asset(
-                        "assets/images/men2.png",
+                        "assets/images/men4.png",
                         width: 50,
                         height: 50,
                       ),

@@ -1,13 +1,21 @@
 import 'package:a_alkarar_lab/lab_icons_icons.dart';
-import 'package:a_alkarar_lab/models/userPortfolio.dart';
+import 'package:a_alkarar_lab/models/staff.dart';
+import 'package:a_alkarar_lab/providers/allProvider.dart';
 import 'package:a_alkarar_lab/widgets/staff-template.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class LabScreen extends StatelessWidget {
+class LabScreen extends StatefulWidget {
+  @override
+  _LabScreenState createState() => _LabScreenState();
+}
+
+class _LabScreenState extends State<LabScreen> {
   @override
   Widget build(BuildContext context) {
+    final allposts = Provider.of<AllProvider>(context, listen: false);
     return SingleChildScrollView(
       child: Container(
         child: Column(
@@ -162,26 +170,37 @@ class LabScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      StaffTemplate(
-                        staffPort: UserPortfolio(
-                            image: "assets/images/face3.jpg",
-                            name: "نهى احمد علي"),
-                      ),
-                      StaffTemplate(
-                        staffPort: UserPortfolio(
-                            image: "assets/images/face1.jpg",
-                            name: "علي عبد الواحد عمر"),
-                      ),
-                      StaffTemplate(
-                        staffPort: UserPortfolio(
-                            image: "assets/images/face2.jpg",
-                            name: "سيف ماهر محمد"),
-                      )
-                    ],
-                  ),
+                  allposts.newsDataOffline3 == null
+                      ? FutureBuilder(
+                          future: allposts.fetchDataStaff(),
+                          builder: (ctx, authResultSnap) {
+                            if (authResultSnap.connectionState ==
+                                ConnectionState.waiting) {
+                              return Padding(
+                                padding: const EdgeInsets.only(top: 180.0),
+                                child: Center(
+                                    child: CircularProgressIndicator(
+                                  backgroundColor:
+                                      Theme.of(context).primaryColor,
+                                  strokeWidth: 2,
+                                )),
+                              );
+                            } else if (authResultSnap.hasError) {
+                              print(authResultSnap.error);
+                              return RaisedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    //other.getUserLocation();
+                                  });
+                                },
+                                child: Text("تفقد من الاتصال بلانترنت",
+                                    style: TextStyle(color: Colors.black)),
+                              );
+                            } else {
+                              return StaffTemplate();
+                            }
+                          })
+                      : StaffTemplate(),
                   Divider(),
                 ],
               ),
