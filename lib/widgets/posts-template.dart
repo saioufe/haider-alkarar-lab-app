@@ -1,17 +1,46 @@
 import 'package:a_alkarar_lab/models/post.dart';
 import 'package:a_alkarar_lab/screens/news-pressed-screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/allProvider.dart';
 
 class NewsTemplate extends StatelessWidget {
-  final Post post;
+  @override
+  Widget build(BuildContext context) {
+    final allPosts = Provider.of<AllProvider>(context, listen: false);
+    return SizedBox(
+      //height: MediaQuery.of(context).size.height * 3.55,
+      child: Column(
+          children: allPosts.posts.map((item) {
+        return Template(
+          post: Post(
+            id: item.id,
+            title: item.title,
+            text: item.text,
+            date: item.date,
+            name: item.name,
+            postImage: item.postImage,
+            readTime: item.readTime,
+          ),
+        );
+      }).toList()),
+    );
+  }
+}
 
-  NewsTemplate({this.post});
+class Template extends StatelessWidget {
+  final Post post;
+  const Template({
+    Key key,
+    @required this.post,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(NewsPressedScreen.routeName,
-            arguments: post);
+        Navigator.of(context)
+            .pushNamed(NewsPressedScreen.routeName, arguments: post);
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 20.0),
@@ -28,7 +57,13 @@ class NewsTemplate extends StatelessWidget {
               Container(
                 child: Hero(
                   tag: post.id,
-                  child: Image.asset(post.postImage),
+                  child: FadeInImage(
+                    placeholder: AssetImage('assets/images/slide3.png'),
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    image: NetworkImage(
+                        "http://pandoradevs.com/images/posts/${post.postImage}"),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
               Padding(
@@ -51,7 +86,7 @@ class NewsTemplate extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width / 1.7,
                             child: Text(
-                              post.title,
+                              post.name,
                               textAlign: TextAlign.right,
                               style: TextStyle(
                                   fontFamily: 'tajawal',
@@ -82,7 +117,7 @@ class NewsTemplate extends StatelessWidget {
                     ),
                     ClipRRect(
                       child: Image.asset(
-                        post.userImage,
+                        "assets/images/men2.png",
                         width: 50,
                         height: 50,
                       ),

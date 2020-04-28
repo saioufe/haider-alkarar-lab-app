@@ -6,14 +6,8 @@ class Post {
   final String text;
   final String date;
   final String postImage;
-  final String userImage;
-  final String userName;
-  final int readTime;
-  final int veryBad;
-  final int bad;
-  final int good;
-  final int veryGood;
-  final int excelent;
+  final String name;
+  final String readTime;
 
   Post({
     this.id,
@@ -21,13 +15,10 @@ class Post {
     this.text,
     this.date,
     this.postImage,
-    this.userImage,
-    this.userName,
+    this.name,
     this.readTime,
-    this.veryBad,
-    this.bad,
-    this.good,
-    this.veryGood,
-    this.excelent,
   });
+
+
+  
 }

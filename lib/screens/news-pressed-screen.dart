@@ -1,35 +1,27 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:a_alkarar_lab/models/post.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 //import 'package:reviews_slider/reviews_slider.dart';
+import '../providers/allProvider.dart';
 
 class NewsPressedScreen extends StatefulWidget {
-  
   static const routeName = '/news_pressed_screen';
 
   @override
   _NewsPressedScreenState createState() => _NewsPressedScreenState();
 }
 
-
 class _NewsPressedScreenState extends State<NewsPressedScreen> {
   @override
   void initState() {
-    getData();
+    //postRequest('https://pandoradevs.com/getflutter.php');
     super.initState();
-  }
-
-    Future getData() async{
-    var url = 'https://www.pandoradevs.com/getflutter.php';
-    http.Response response = await http.get(url);
-    var data = jsonDecode(response.body);
-    print(data.toString());
   }
 
   @override
   Widget build(BuildContext context) {
     final postData = ModalRoute.of(context).settings.arguments as Post;
+
     //final loadedNews = Provider.of<OthersProvider>(context).findById(productId);
     //final List<String> texts = loadedNews.text.split("*");
     //final Widget test = loadedNews.test;
@@ -50,13 +42,16 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 title: Text(
-                 postData.title,
+                  postData.title,
                   style: TextStyle(color: Colors.white),
                 ),
                 background: Hero(
-                  tag: postData.id ,
-                  child: Image.asset(
-                    postData.postImage,
+                  tag: postData.id,
+                  child: FadeInImage(
+                    placeholder: AssetImage('assets/images/slide2.png'),
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    image: NetworkImage(
+                        "http://pandoradevs.com/images/posts/${postData.postImage}"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -98,7 +93,7 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
                                 Text(
-                                  postData.userName,
+                                  postData.name,
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                       fontFamily: 'tajawal',
@@ -109,7 +104,7 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 Text(
-                                 postData.date,
+                                  postData.date.toString(),
                                   style: TextStyle(
                                       fontFamily: 'tajawal',
                                       color: Theme.of(context).accentColor),
@@ -121,7 +116,7 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
                             padding: const EdgeInsets.only(right: 12, left: 10),
                             child: ClipRRect(
                               child: Image.asset(
-                                postData.userImage,
+                                "assets/images/men2.png",
                                 width: 50,
                                 height: 50,
                               ),
@@ -155,7 +150,10 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
                       SizedBox(
                         height: 15,
                       ),
-                      Text("23 مرة",style: TextStyle(fontFamily: "tajawal",fontSize: 20),)
+                      Text(
+                        "${postData.readTime} مرة",
+                        style: TextStyle(fontFamily: "tajawal", fontSize: 20),
+                      )
                     ],
                   ),
                 ),
@@ -167,9 +165,6 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
     );
   }
 }
-
-
-
 
 Future<bool> _requestPop() {
   return new Future.value(true);

@@ -2,15 +2,26 @@ import 'package:a_alkarar_lab/lab_icons_icons.dart';
 import 'package:a_alkarar_lab/models/post.dart';
 import 'package:a_alkarar_lab/screens/main-screen.dart';
 import 'package:a_alkarar_lab/widgets/posts-template.dart';
+import 'package:a_alkarar_lab/widgets/slider-template.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
+import '../providers/allProvider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final allposts = Provider.of<AllProvider>(context, listen: false);
+    final allslider = Provider.of<AllProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
           actions: <Widget>[
@@ -51,82 +62,66 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20.0),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                    height: 170,
-                    aspectRatio: 16 / 9,
-                    viewportFraction: 0.8,
-                    initialPage: 0,
-                    enableInfiniteScroll: true,
-                    reverse: false,
-                    autoPlay: true,
-                    autoPlayInterval: Duration(seconds: 3),
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enlargeCenterPage: true,
-                    scrollDirection: Axis.horizontal,
-                  ),
-                  items: [
-                    "assets/images/slide3.png",
-                    "assets/images/slide1.png",
-                    "assets/images/slide2.png",
-                    "assets/images/slide4.png"
-                  ].map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return InkWell(
-                            onTap: () {
-                              print(i.toString());
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.symmetric(horizontal: 5.0),
-                              decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  image: DecorationImage(
-                                      image: new AssetImage(i),
-                                      fit: BoxFit.fill),
-                                  borderRadius: BorderRadius.circular(10)),
-                            ));
-                      },
-                    );
-                  }).toList(),
-                ),
+                child: FutureBuilder(
+                    future: allposts.fetchDataSliders(),
+                    builder: (ctx, authResultSnap) {
+                      if (authResultSnap.connectionState ==
+                          ConnectionState.waiting) {
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 180.0),
+                          child: Center(
+                              child: CircularProgressIndicator(
+                            backgroundColor: Theme.of(context).primaryColor,
+                            strokeWidth: 2,
+                          )),
+                        );
+                      } else if (authResultSnap.hasError) {
+                        print(authResultSnap.error);
+                        return RaisedButton(
+                          onPressed: () {
+                            setState(() {
+                              //other.getUserLocation();
+                            });
+                          },
+                          child: Text("تفقد من الاتصال بلانترنت",
+                              style: TextStyle(color: Colors.black)),
+                        );
+                      } else {
+                        return SliderTemplate();
+                      }
+                    }),
               ),
             ),
-            NewsTemplate(
-              post: Post(
-                  id: '1',
-                  title: 'هنا يكتب عنوان الموضوع',
-                  postImage: 'assets/images/slide3.png',
-                  userImage: 'assets/images/men2.png',
-                  userName: "دكتور سيف ماهر محمد",
-                  date: '12/4/2020',
-                  text:
-                      'هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرحهذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرحهذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح'),
-            ),
-            NewsTemplate(
-              post: Post(
-                  id: '2',
-                  title: 'هنا يكتب عنوان الموضوع',
-                  postImage: 'assets/images/slide2.png',
-                  userImage: 'assets/images/men3.png',
-                  userName: "دكتور سيف ماهر محمد",
-                  date: '12/4/2020',
-                  text:
-                      'هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرحهذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرحهذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح'),
-            ),
-            NewsTemplate(
-              post: Post(
-                  id: '3',
-                  title: 'هنا يكتب عنوان الموضوع',
-                  postImage: 'assets/images/slide1.png',
-                  userImage: 'assets/images/women2.png',
-                  userName: "دكتور سيف ماهر محمد",
-                  date: '12/14/2020',
-                  text:
-                      'هذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرحهذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرحهذا هو الشرح هذا هو الشرح هذا هو الشرح هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح هذا هو الشرح'),
-            )
+            // allposts.checkConnection() == false
+            FutureBuilder(
+                future: allposts.fetchData(),
+                builder: (ctx, authResultSnap) {
+                  if (authResultSnap.connectionState ==
+                      ConnectionState.waiting) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 180.0),
+                      child: Center(
+                          child: CircularProgressIndicator(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        strokeWidth: 2,
+                      )),
+                    );
+                  } else if (authResultSnap.hasError) {
+                    print(authResultSnap.error);
+                    return RaisedButton(
+                      onPressed: () {
+                        setState(() {
+                          //other.getUserLocation();
+                        });
+                      },
+                      child: Text("تفقد من الاتصال بلانترنت",
+                          style: TextStyle(color: Colors.black)),
+                    );
+                  } else {
+                    return NewsTemplate();
+                  }
+                }),
+            //  : NewsTemplate(),
           ],
         ),
       ),
