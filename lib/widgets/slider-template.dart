@@ -42,8 +42,8 @@ class SliderTemplate extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                       color: Theme.of(context).accentColor,
-                      blurRadius: 5.3,
-                      spreadRadius: 0.5,
+                      blurRadius: 1.3,
+                      spreadRadius: 0.1,
                       offset: Offset.fromDirection(-10))
                 ],
                 color: Theme.of(context).primaryColor,

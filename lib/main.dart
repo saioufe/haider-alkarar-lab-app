@@ -44,11 +44,12 @@ void main() async {
             ),
           ),
           home: SplashScreen.navigate(
-            name: 'assets/images/splashIntro.flr',
+            name: 'assets/images/hairderLab.flr',
             next: (_) => MainScreen(0),
-            until: () => Future.delayed(Duration(seconds: 5)),
-            startAnimation: 'intro',
-            endAnimation: '4',
+            until: () => Future.delayed(Duration(seconds: 1)),
+            startAnimation: 'Untitled',
+            backgroundColor: Colors.white,
+            endAnimation: '1',
           ),
           routes: {
             NewsPressedScreen.routeName: (ctx) => NewsPressedScreen(),
