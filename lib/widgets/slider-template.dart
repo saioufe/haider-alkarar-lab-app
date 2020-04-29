@@ -49,7 +49,7 @@ class SliderTemplate extends StatelessWidget {
                 color: Theme.of(context).primaryColor,
                 image: DecorationImage(
                   image: NetworkImage(
-                      "https://pandoradevs.com/images/slider/${allPosts.sliders[itemIndex].image}"),
+                      "${AllProvider.hostName}/images/slider/${allPosts.sliders[itemIndex].image}"),
                   fit: BoxFit.fill,
                 ),
                 borderRadius: BorderRadius.circular(10)),

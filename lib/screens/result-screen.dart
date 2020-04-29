@@ -189,7 +189,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                               // );
 
                               const url =
-                                  'http://pandoradevs.com/results/book.pdf';
+                                  '${AllProvider.hostName}/results/book.pdf';
                               if (await canLaunch(url)) {
                                 await launch(url);
                               } else {

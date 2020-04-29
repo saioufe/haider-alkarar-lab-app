@@ -1,12 +1,8 @@
 import 'package:a_alkarar_lab/lab_icons_icons.dart';
-import 'package:a_alkarar_lab/models/post.dart';
 import 'package:a_alkarar_lab/screens/main-screen.dart';
 import 'package:a_alkarar_lab/widgets/posts-template.dart';
 import 'package:a_alkarar_lab/widgets/slider-template.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-//import 'package:google_fonts/google_fonts.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';

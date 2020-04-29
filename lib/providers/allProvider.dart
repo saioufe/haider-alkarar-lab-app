@@ -13,6 +13,7 @@ import 'package:http/http.dart' as http;
 import '../models/slider.dart';
 
 class AllProvider extends ChangeNotifier {
+  static const String hostName = "https://pandoradevs.com";
   static bool hasLogin;
   List<Post> _posts = [];
   List<Post> get posts {
@@ -23,7 +24,7 @@ class AllProvider extends ChangeNotifier {
   List<dynamic> newsDataOffline;
   Future<void> fetchData() async {
     final response =
-        await http.post('https://pandoradevs.com/get-post-flutter.php');
+        await http.post('$hostName/get-post-flutter.php');
 
 //print(response.body);
     data = json.decode(response.body);
@@ -60,7 +61,7 @@ class AllProvider extends ChangeNotifier {
   List<dynamic> newsDataOffline2;
   Future<void> fetchDataSliders() async {
     final response =
-        await http.post('https://pandoradevs.com/get-slider-flutter.php');
+        await http.post('$hostName/get-slider-flutter.php');
 
     data2 = json.decode(response.body);
     // print(response.body);
@@ -89,7 +90,7 @@ class AllProvider extends ChangeNotifier {
   List<dynamic> newsDataOffline3;
   Future<void> fetchDataStaff() async {
     final response =
-        await http.post('https://pandoradevs.com/get-staff-flutter.php');
+        await http.post('$hostName/get-staff-flutter.php');
 
     data3 = json.decode(response.body);
     //print(response.body);
@@ -118,7 +119,7 @@ class AllProvider extends ChangeNotifier {
   final List<Patient> loadedPatient = [];
   Future<Void> login(
       String username, String password, BuildContext context) async {
-    await http.post("http://pandoradevs.com/login-flutter.php", body: {
+    await http.post("$hostName/login-flutter.php", body: {
       "username": username,
       "password": password,
     }).then((respon) {
@@ -153,7 +154,7 @@ class AllProvider extends ChangeNotifier {
   }
 
   Future<bool> checkConnection() async {
-    final url = 'http://pandoradevs.com/get-posts-flutter.php';
+    final url = '$hostName/get-posts-flutter.php';
     final response = await http.get(url);
     final extractedData = json.decode(response.body);
     if (extractedData == null) {

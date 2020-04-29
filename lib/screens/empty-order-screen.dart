@@ -9,73 +9,7 @@ class EmptyOrderScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Center(
-            //   child: Container(
-            //     width: MediaQuery.of(context).size.width / 1.5,
-            //     height: 35,
-            //     decoration: BoxDecoration(
-            //       color: Colors.white,
-            //       borderRadius: BorderRadius.all(
-            //         Radius.circular(10),
-            //       ),
-            //       boxShadow: [
-            //         BoxShadow(
-            //           color: Colors.black12,
-            //           blurRadius: 20,
-            //           spreadRadius:
-            //               0.3, // has the effect of extending the shadow
-            //           offset: Offset(
-            //             0, // horizontal, move right 10
-            //             0, // vertical, move down 10
-            //           ),
-            //         )
-            //       ],
-            //     ),
-            //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //       children: <Widget>[
-            //         InkWell(
-            //           onTap: null,
-            //           child: Text(
-            //             "الكل",
-            //             style: TextStyle(
-            //               fontWeight: FontWeight.w100,
-            //               fontSize: 20,
-            //               color: Color(0xff313e4b),
-            //             ),
-            //             textDirection: TextDirection.rtl,
-            //           ),
-            //         ),
-            //         VerticalDivider(thickness: 1),
-            //         InkWell(
-            //           onTap: null,
-            //           child: Text(
-            //             "جديد",
-            //             style: TextStyle(
-            //               fontWeight: FontWeight.w100,
-            //               fontSize: 20,
-            //               color: Color(0xff313e4b),
-            //             ),
-            //             textDirection: TextDirection.rtl,
-            //           ),
-            //         ),
-            //         VerticalDivider(thickness: 1),
-            //         InkWell(
-            //           onTap: null,
-            //           child: Text(
-            //             "المهمة",
-            //             style: TextStyle(
-            //               fontWeight: FontWeight.w100,
-            //               fontSize: 20,
-            //               color: Color(0xff313e4b),
-            //             ),
-            //             textDirection: TextDirection.rtl,
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+
             Image.asset(
               "assets/images/empty_order.png",
               width: 300,

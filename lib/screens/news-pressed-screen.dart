@@ -51,7 +51,7 @@ class _NewsPressedScreenState extends State<NewsPressedScreen> {
                     placeholder: AssetImage('assets/images/slide2.png'),
                     height: MediaQuery.of(context).size.height * 0.35,
                     image: NetworkImage(
-                        "http://pandoradevs.com/images/posts/${postData.postImage}"),
+                        "${AllProvider.hostName}/images/posts/${postData.postImage}"),
                     fit: BoxFit.cover,
                   ),
                 ),

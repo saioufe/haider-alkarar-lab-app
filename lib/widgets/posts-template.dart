@@ -61,7 +61,7 @@ class Template extends StatelessWidget {
                     placeholder: AssetImage('assets/images/slide3.png'),
                     height: MediaQuery.of(context).size.height * 0.35,
                     image: NetworkImage(
-                        "http://pandoradevs.com/images/posts/${post.postImage}"),
+                        "${AllProvider.hostName}/images/posts/${post.postImage}"),
                     fit: BoxFit.cover,
                   ),
                 ),
