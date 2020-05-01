@@ -1,17 +1,30 @@
 import 'package:a_alkarar_lab/screens/main-screen.dart';
 import 'package:a_alkarar_lab/screens/news-pressed-screen.dart';
 import 'package:flutter/material.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 //import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:provider/provider.dart';
 import './providers/allProvider.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
+//Remove this method to stop OneSignal Debugging
+  WidgetsFlutterBinding.ensureInitialized();
+  OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
 
-  // await FlutterDownloader.initialize(
-  //     debug: true // optional: set false to disable printing logs to console
-  //     );
+  OneSignal.shared.init("34a10f05-fcb0-464e-bc8a-262bdb922960", iOSSettings: {
+    OSiOSSettings.autoPrompt: false,
+    OSiOSSettings.inAppLaunchUrl: false
+  });
+  OneSignal.shared
+      .setInFocusDisplayType(OSNotificationDisplayType.notification);
+
+// The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
+  await OneSignal.shared
+      .promptUserForPushNotificationPermission(fallbackToSettings: true);
+
+
+
   runApp(
     MultiProvider(
         providers: [

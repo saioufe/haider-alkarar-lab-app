@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 import '../models/slider.dart';
 
 class AllProvider extends ChangeNotifier {
-  static const String hostName = "https://pandoradevs.com";
+  static const String hostName = "http://api.h-alkararlab.com/";
   static bool hasLogin;
   List<Post> _posts = [];
   List<Post> get posts {
@@ -23,8 +23,7 @@ class AllProvider extends ChangeNotifier {
   List data = [];
   List<dynamic> newsDataOffline;
   Future<void> fetchData() async {
-    final response =
-        await http.post('$hostName/get-post-flutter.php');
+    final response = await http.post('$hostName/get-post-flutter.php');
 
 //print(response.body);
     data = json.decode(response.body);
@@ -60,8 +59,7 @@ class AllProvider extends ChangeNotifier {
   List<SliderModel> loadedSlider;
   List<dynamic> newsDataOffline2;
   Future<void> fetchDataSliders() async {
-    final response =
-        await http.post('$hostName/get-slider-flutter.php');
+    final response = await http.post('$hostName/get-slider-flutter.php');
 
     data2 = json.decode(response.body);
     // print(response.body);
@@ -89,8 +87,7 @@ class AllProvider extends ChangeNotifier {
   List<StaffModel> loadedStaff;
   List<dynamic> newsDataOffline3;
   Future<void> fetchDataStaff() async {
-    final response =
-        await http.post('$hostName/get-staff-flutter.php');
+    final response = await http.post('$hostName/get-staff-flutter.php');
 
     data3 = json.decode(response.body);
     //print(response.body);
@@ -118,10 +115,11 @@ class AllProvider extends ChangeNotifier {
   List userData = [];
   final List<Patient> loadedPatient = [];
   Future<Void> login(
-      String username, String password, BuildContext context) async {
+      String username, String password, BuildContext context, String id) async {
     await http.post("$hostName/login-flutter.php", body: {
       "username": username,
       "password": password,
+      "onesignalid": id,
     }).then((respon) {
       userData = json.decode(respon.body);
       if (userData == null) {

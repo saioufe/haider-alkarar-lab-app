@@ -2,8 +2,10 @@ import 'package:a_alkarar_lab/screens/main-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
 import '../providers/allProvider.dart';
+import 'package:custom_switch_button/custom_switch_button.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -44,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
+    bool isCheckedbool = false;
     final allposts = Provider.of<AllProvider>(context, listen: false);
     return new Scaffold(
       // appBar: AppBar(
@@ -64,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen>
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height >= 775.0
                 ? MediaQuery.of(context).size.height
-                : 645.0,
+                : 675.0,
             decoration: new BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -93,6 +96,19 @@ class _LoginScreenState extends State<LoginScreen>
                     ),
                   ),
                 ),
+                // Center(
+                //   child: Switch(
+                //     value: isCheckedbool,
+                //     onChanged: (value) {
+                //       setState(() {
+                //         isCheckedbool = value;
+                //         print(isCheckedbool);
+                //       });
+                //     },
+                //     activeTrackColor: Colors.lightGreenAccent,
+                //     activeColor: Colors.green,
+                //   ),
+                // ),
                 Expanded(
                   flex: 2,
                   child: PageView(
@@ -293,8 +309,10 @@ class _LoginScreenState extends State<LoginScreen>
                   onPressed: () {
                     print(loginEmailController.text);
                     print(loginPasswordController.text);
-                    allposts.login(loginEmailController.text,
-                        loginPasswordController.text, context);
+                    _handleSetExternalUserId().then((id) {
+                      allposts.login(loginEmailController.text,
+                          loginPasswordController.text, context, id);
+                    });
 
                     showInSnackBar("يرجى الانتظار");
                   },
@@ -305,6 +323,23 @@ class _LoginScreenState extends State<LoginScreen>
         ],
       ),
     );
+  }
+
+  Future<String> _handleSetExternalUserId() async {
+    var status = await OneSignal.shared.getPermissionSubscriptionState();
+
+    var playerId = status.subscriptionStatus.userId;
+    print(playerId);
+    return (playerId);
+    // print("Setting external user ID");
+    // OneSignal.shared.setExternalUserId("1212").then((results) async {
+    //   if (results == null) return;
+
+    //   this.setState(() {
+    //     var _debugLabelString = "External user id set: $results";
+    //     print(_debugLabelString);
+    //   });
+    //});
   }
 
   void _onSignInButtonPress() {

@@ -165,54 +165,62 @@ class _ResultsScreenState extends State<ResultsScreen> {
                     duration: Duration(milliseconds: 500),
                     curve: Curves.elasticOut,
                     child: Container(
-                      height: 100,
-                      width: MediaQuery.of(context).size.width / 2.4,
-                      child: SingleChildScrollView(
-                          child: FlatButton(
-                        focusColor: Colors.red,
-                        textColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                        color: Theme.of(context).bottomAppBarColor,
-                        child: Center(
-                          child: FlatButton(
-                            onPressed: () async {
-                              // final taskId = await FlutterDownloader.enqueue(
-                              //   url:
-                              //       'bin/dl.cgi/v376mg4vg73joepvvlg4lmdn7j3khyja6l2a22q6wfi7gqegypm2t3y/793176674_Sharp_Textures.zip',
-                              //   savedDir: 'download',
-                              //   showNotification:
-                              //       true, // show download progress in status bar (for Android)
-                              //   openFileFromNotification:
-                              //       true, // click on notification to open downloaded file (for Android)
-                              // );
+                        height: 100,
+                        width: MediaQuery.of(context).size.width / 2.4,
+                        child: SingleChildScrollView(
+                            child: allposts.patient[0].status == "f"
+                                ? FlatButton(
+                                    focusColor: Colors.red,
+                                    textColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                    color: Theme.of(context).bottomAppBarColor,
+                                    child: Center(
+                                      child: FlatButton(
+                                        onPressed: () async {
+                                          // final taskId = await FlutterDownloader.enqueue(
+                                          //   url:
+                                          //       'bin/dl.cgi/v376mg4vg73joepvvlg4lmdn7j3khyja6l2a22q6wfi7gqegypm2t3y/793176674_Sharp_Textures.zip',
+                                          //   savedDir: 'download',
+                                          //   showNotification:
+                                          //       true, // show download progress in status bar (for Android)
+                                          //   openFileFromNotification:
+                                          //       true, // click on notification to open downloaded file (for Android)
+                                          // );
 
-                              const url =
-                                  '${AllProvider.hostName}/results/book.pdf';
-                              if (await canLaunch(url)) {
-                                await launch(url);
-                              } else {
-                                throw 'Could not launch $url';
-                              }
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Icon(Icons.file_download ,color: Colors.white,),
-                                Text("تحميل",
-                                    style: TextStyle(
-                                        fontFamily: 'tajawal',
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold)),
-                              ],
-                            ),
-                          ),
-                        ),
-                        onPressed: () {},
-                      )),
-                    ),
+                                          String url =
+                                              '${AllProvider.hostName}/results/${allposts.patient[0].file}';
+                                          if (await canLaunch(url)) {
+                                            await launch(url);
+                                          } else {
+                                            throw 'Could not launch $url';
+                                          }
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.file_download,
+                                              color: Colors.white,
+                                            ),
+                                            Text("تحميل",
+                                                style: TextStyle(
+                                                    fontFamily: 'tajawal',
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    onPressed: () {},
+                                  )
+                                : SizedBox(
+                                    height: 1,
+                                  ))),
                   ),
                 ),
               ),

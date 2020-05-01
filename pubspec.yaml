@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -31,6 +31,8 @@ dependencies:
   basic_utils: ^2.5.3
   shimmer: ^1.1.1
   flare_splash_screen: ^3.0.1
+  onesignal_flutter: ^2.4.1
+  custom_switch_button: ^0.5.0
   #flutter_downloader: ^1.4.4
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

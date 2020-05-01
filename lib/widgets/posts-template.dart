@@ -71,13 +71,13 @@ class Template extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     SizedBox(width: 10.0),
-                    GestureDetector(
-                      onTap: () {
-                        print("clicked");
-                      },
-                      child: Icon(Icons.share,
-                          color: Theme.of(context).bottomAppBarColor),
-                    ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     print("clicked");
+                    //   },
+                    //   child: Icon(Icons.share,
+                    //       color: Theme.of(context).bottomAppBarColor),
+                    // ),
                     Spacer(),
                     Column(
                       children: <Widget>[
