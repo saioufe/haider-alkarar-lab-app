@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 import '../models/slider.dart';
 
 class AllProvider extends ChangeNotifier {
-  static const String hostName = "http://api.h-alkararlab.com/";
+  static const String hostName = "http://api.h-alkararlab.com";
   static bool hasLogin;
   List<Post> _posts = [];
   List<Post> get posts {

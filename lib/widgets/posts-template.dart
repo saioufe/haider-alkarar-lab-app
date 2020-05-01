@@ -125,7 +125,21 @@ class Template extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+              Container(
+                margin: EdgeInsets.all(10),
+                child: Text(
+                  post.title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'tajawal',
+                      fontSize: 20,
+                      color: Theme.of(context).bottomAppBarColor,
+                      fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              SizedBox(height: 10,)
             ],
           ),
         ),
