@@ -5,6 +5,7 @@ import 'package:a_alkarar_lab/models/post.dart';
 import 'package:a_alkarar_lab/models/staff.dart';
 import 'package:a_alkarar_lab/screens/main-screen.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -112,10 +113,36 @@ class AllProvider extends ChangeNotifier {
     return [..._patient];
   }
 
+  checkLogin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //prefs.clear();
+    if (prefs.containsKey('username') && prefs.containsKey("password")) {
+      AllProvider.hasLogin = true;
+      loadedPatient = [
+        Patient(
+          id: prefs.getString("id"),
+          name: prefs.getString("name"),
+          description: prefs.getString("description"),
+          age: prefs.getString("age"),
+          date: prefs.getString("date"),
+          file: prefs.getString("file"),
+          sex: prefs.getString("sex"),
+          status: prefs.getString("status"),
+        )
+      ];
+      _patient = loadedPatient;
+
+      //allPosts.setme(AllProvider.loadedPatient);
+      print("he is online");
+    }
+  }
+
   List userData = [];
-  final List<Patient> loadedPatient = [];
+  List<Patient> loadedPatient = [];
   Future<Void> login(
       String username, String password, BuildContext context, String id) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
     await http.post("$hostName/login-flutter.php", body: {
       "username": username,
       "password": password,
@@ -137,8 +164,18 @@ class AllProvider extends ChangeNotifier {
             status: newsId['status'],
             file: newsId['file'],
           ));
+          prefs.setString('id', newsId['id']);
+          prefs.setString('name', newsId['name']);
+          prefs.setString('age', newsId['age']);
+          prefs.setString('sex', newsId['sex']);
+          prefs.setString('description', newsId['description']);
+          prefs.setString('date', newsId['date']);
+          prefs.setString('status', newsId['status']);
+          prefs.setString('file', newsId['file']);
         });
         hasLogin = true;
+        prefs.setString('username', username);
+        prefs.setString('password', password);
 
         Navigator.pushReplacement(
             context,

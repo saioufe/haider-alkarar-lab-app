@@ -124,6 +124,8 @@ class _TabsScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final allPosts =
+        Provider.of<AllProvider>(context, listen: true).checkLogin();
     return Scaffold(
       // appBar: AppBar(
       //   title: Text(_pages[_selectedPageIndex]['title']),

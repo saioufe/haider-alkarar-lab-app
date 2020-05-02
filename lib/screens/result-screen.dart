@@ -1,12 +1,16 @@
 import 'package:a_alkarar_lab/models/result.dart';
 import 'package:a_alkarar_lab/providers/allProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/order-item.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
+
+import 'main-screen.dart';
 //import 'package:flutter_downloader/flutter_downloader.dart';
 
 class ResultsScreen extends StatefulWidget {
@@ -102,6 +106,28 @@ class _ResultsScreenState extends State<ResultsScreen> {
                       color: Theme.of(context).accentColor,
                     ),
                     textDirection: TextDirection.rtl,
+                  ),
+                  InkWell(
+                    onTap: () async {
+                      AllProvider.hasLogin = false;
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.clear();
+                      Navigator.pushReplacement(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.upToDown,
+                              child: MainScreen(2)));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Text("تسجيل الخروج",
+                          style: TextStyle(
+                              fontFamily: 'tajawal',
+                              color: Colors.blue,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold)),
+                    ),
                   ),
                 ],
               ),
