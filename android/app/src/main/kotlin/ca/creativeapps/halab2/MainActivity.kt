@@ -1,4 +1,4 @@
-package com.creativeapps.halab
+package com.creativeapps.labhaider
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

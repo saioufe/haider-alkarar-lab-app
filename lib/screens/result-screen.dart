@@ -117,7 +117,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                           context,
                           PageTransition(
                               type: PageTransitionType.upToDown,
-                              child: MainScreen(2)));
+                              child: MainScreen(0)));
                     },
                     child: Container(
                       margin: EdgeInsets.only(top: 10),

@@ -18,7 +18,7 @@ class AllProvider extends ChangeNotifier {
   static bool hasLogin;
   List<Post> _posts = [];
   List<Post> get posts {
-    return [..._posts];
+    return _posts;
   }
 
   List data = [];
@@ -53,7 +53,7 @@ class AllProvider extends ChangeNotifier {
 
   List<SliderModel> _slider = [];
   List<SliderModel> get sliders {
-    return [..._slider];
+    return _slider;
   }
 
   List data2 = [];
@@ -81,7 +81,7 @@ class AllProvider extends ChangeNotifier {
 
   List<StaffModel> _staff = [];
   List<StaffModel> get staff {
-    return [..._staff];
+    return _staff;
   }
 
   List data3 = [];
@@ -110,7 +110,7 @@ class AllProvider extends ChangeNotifier {
 
   List<Patient> _patient = [];
   List<Patient> get patient {
-    return [..._patient];
+    return _patient;
   }
 
   checkLogin() async {
