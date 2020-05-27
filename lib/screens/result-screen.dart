@@ -1,6 +1,7 @@
 import 'package:a_alkarar_lab/models/result.dart';
 import 'package:a_alkarar_lab/providers/allProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,7 +19,38 @@ class ResultsScreen extends StatefulWidget {
   _ResultsScreenState createState() => _ResultsScreenState();
 }
 
+Color notificationColor = Colors.green;
+bool notificationIsActive = true;
+String notificationText = "مفعل";
+
 class _ResultsScreenState extends State<ResultsScreen> {
+  void initState() {
+    checkNotification();
+  }
+
+  void checkNotification() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (prefs.containsKey("notification")) {
+      notificationIsActive = prefs.getBool("notification");
+    }
+
+    if (notificationIsActive == true) {
+      await OneSignal.shared.setSubscription(true);
+      setState(() {
+        notificationText = "مفعل";
+        notificationColor = Colors.green;
+      });
+    } else {
+      await OneSignal.shared.setSubscription(false);
+      setState(() {
+        notificationText = "متوقف";
+        notificationColor = Colors.red;
+      });
+    }
+    print(notificationIsActive);
+  }
+
   double _progressSlideSheet = 0;
   @override
   Widget build(BuildContext context) {
@@ -94,19 +126,19 @@ class _ResultsScreenState extends State<ResultsScreen> {
                     ),
                     textDirection: TextDirection.rtl,
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "الجنس : ${allposts.patient[0].sex}",
-                    style: TextStyle(
-                      fontFamily: 'tajawal',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20,
-                      color: Theme.of(context).accentColor,
-                    ),
-                    textDirection: TextDirection.rtl,
-                  ),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
+                  // Text(
+                  //   "الجنس : ${allposts.patient[0].sex}",
+                  //   style: TextStyle(
+                  //     fontFamily: 'tajawal',
+                  //     fontWeight: FontWeight.w600,
+                  //     fontSize: 20,
+                  //     color: Theme.of(context).accentColor,
+                  //   ),
+                  //   textDirection: TextDirection.rtl,
+                  // ),
                   InkWell(
                     onTap: () async {
                       AllProvider.hasLogin = false;
@@ -127,6 +159,41 @@ class _ResultsScreenState extends State<ResultsScreen> {
                               color: Colors.blue,
                               fontSize: 15,
                               fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      setState(() {
+                        notificationIsActive = !notificationIsActive;
+                        prefs.setBool("notification", notificationIsActive);
+                      });
+                      if (notificationIsActive == true) {
+                        setState(() {
+                          notificationText =
+                              "مفعل";
+                          notificationColor = Colors.green;
+                        });
+                      } else {
+                        setState(() {
+                          notificationText =
+                              "متوقف";
+                          notificationColor = Colors.red;
+                        });
+                      }
+                    },
+                    child: new SettingBar(
+                      "تفعيل الاشعارات",
+                      Text(
+                        notificationIsActive == true ? "مفعل" : "متوقف",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          letterSpacing: 0.0,
+                          color: notificationColor,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -383,10 +450,55 @@ class _ResultsScreenState extends State<ResultsScreen> {
                     ),
                   );
                 },
-              )
+              ),
+              
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SettingBar extends StatelessWidget {
+  SettingBar(this.title, this.child);
+
+  final Widget child;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      height: 30,
+      width: 380,
+      padding: EdgeInsets.only(right: 30, left: 30),
+      decoration: BoxDecoration(
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: Theme.of(context).bottomAppBarColor.withOpacity(0.1),
+              offset: Offset(1.1, 1.1),
+              blurRadius: 10.0),
+        ],
+        color: Colors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(5),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              letterSpacing: 0.0,
+              color: Theme.of(context).bottomAppBarColor,
+            ),
+          ),
+          child,
+        ],
       ),
     );
   }

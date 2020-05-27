@@ -136,7 +136,7 @@ class _TabsScreenState extends State<MainScreen> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
             color: Colors.white),
-        height: 80,
+        height: 110,
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           onTap: (s) {
